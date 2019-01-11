@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -248,7 +248,9 @@ public class WithingsAuthenticator implements ManagedService {
                 } else if ("tokensecret".equals(configKeyTail)) {
                     account.tokenSecret = value;
                 } else {
-                    throw new ConfigurationException(configKey, "The given configuration key is unknown!");
+                    String msg = "The configuration key '" + configKey + "' is not recognized and will be ignored.";
+                    logger.debug(msg);
+                    throw new ConfigurationException(configKey, msg);
                 }
             }
 
@@ -268,7 +270,7 @@ public class WithingsAuthenticator implements ManagedService {
                 printAuthenticationInfo(accountId);
             } else {
                 logger.warn(
-                        "Configuration details of Account '{}' are invalid please check openhab.cfg or withings.cfg.",
+                        "Configuration details of Account '{}' are invalid. Please check the configuration.",
                         accountId);
             }
         }

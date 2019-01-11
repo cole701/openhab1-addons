@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -29,6 +29,7 @@ public class LocationConfig {
     private Integer updateInterval = DEFAULT_UPDATE_INTERVAL;
     private String locationId;
     private String name;
+    private String units = "si";
 
     /**
      * Returns the language.
@@ -143,6 +144,20 @@ public class LocationConfig {
     }
 
     /**
+     * Returns the units of measurement.
+     */
+    public String getMeasurementUnits() {
+        return units;
+    }
+
+    /**
+     * Sets the units of measurement.
+     */
+    public void setMeasurementUnits(String u) {
+        units = u;
+    }
+
+    /**
      * Returns true, if this config is valid.
      */
     public boolean isValid() {
@@ -151,11 +166,7 @@ public class LocationConfig {
             return false;
         }
 
-        if (providerName == ProviderName.YAHOO) {
-            return woeid != null;
-        } else {
-            return latitude != null && longitude != null;
-        }
+        return latitude != null && longitude != null;
     }
 
     /**

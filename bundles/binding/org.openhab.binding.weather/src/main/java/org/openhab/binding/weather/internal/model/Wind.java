@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -18,6 +18,7 @@ import org.openhab.binding.weather.internal.converter.ConverterType;
  * Common provider model for wind data.
  *
  * @author Gerhard Riegler
+ * @author Christoph Weitkamp - Added mapping for OpenWeatherMap for channel 'gust'
  * @since 1.6.0
  */
 public class Wind {
@@ -25,10 +26,9 @@ public class Wind {
     @ProviderMappings({
             @Provider(name = ProviderName.WUNDERGROUND, property = "current_observation.wind_kph"),
             @Provider(name = ProviderName.WUNDERGROUND, property = "avewind.kph"),
-            @Provider(name = ProviderName.OPENWEATHERMAP, property = "speed"),
+            @Provider(name = ProviderName.OPENWEATHERMAP, property = "speed", converter = ConverterType.WIND_MPS),
             @Provider(name = ProviderName.FORECASTIO, property = "windSpeed", converter = ConverterType.WIND_MPS),
             @Provider(name = ProviderName.WORLDWEATHERONLINE, property = "windspeedKmph"),
-            @Provider(name = ProviderName.YAHOO, property = "wind.speed"),
             @Provider(name = ProviderName.HAMWEATHER, property = "windSpeedKPH"),
             @Provider(name = ProviderName.METEOBLUE, property = "wind_speed"),
             @Provider(name = ProviderName.METEOBLUE, property = "wind_speed_max") })
@@ -45,19 +45,19 @@ public class Wind {
             @Provider(name = ProviderName.OPENWEATHERMAP, property = "deg"),
             @Provider(name = ProviderName.FORECASTIO, property = "windBearing"),
             @Provider(name = ProviderName.WORLDWEATHERONLINE, property = "winddirDegree"),
-            @Provider(name = ProviderName.YAHOO, property = "wind.direction"),
             @Provider(name = ProviderName.HAMWEATHER, property = "windDirDEG") })
     private Integer degree;
 
     @ProviderMappings({
+            @Provider(name = ProviderName.FORECASTIO, property = "windGust", converter = ConverterType.WIND_MPS),
             @Provider(name = ProviderName.WUNDERGROUND, property = "current_observation.wind_gust_kph"),
             @Provider(name = ProviderName.WUNDERGROUND, property = "wind.gust"),
+            @Provider(name = ProviderName.OPENWEATHERMAP, property = "gust", converter = ConverterType.WIND_MPS),
             @Provider(name = ProviderName.HAMWEATHER, property = "windGustKPH"),
             @Provider(name = ProviderName.METEOBLUE, property = "wind_gust_max") })
     private Double gust;
 
     @ProviderMappings({
-            @Provider(name = ProviderName.YAHOO, property = "wind.chill"),
             @Provider(name = ProviderName.WUNDERGROUND, property = "windchill_c"),
             @Provider(name = ProviderName.HAMWEATHER, property = "windchillC") })
     private Double chill;

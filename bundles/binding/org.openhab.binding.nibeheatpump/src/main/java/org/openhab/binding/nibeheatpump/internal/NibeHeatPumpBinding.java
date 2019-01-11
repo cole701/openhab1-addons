@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -146,7 +146,7 @@ public class NibeHeatPumpBinding extends AbstractBinding<NibeHeatPumpBindingProv
             try {
                 connector.connect();
             } catch (NibeHeatPumpException e) {
-                logger.error("Error occured when connecting to heat pump", e);
+                logger.error("Error occurred when connecting to heat pump", e);
 
                 logger.warn("Closing Nibe heatpump message listener");
 
@@ -227,14 +227,14 @@ public class NibeHeatPumpBinding extends AbstractBinding<NibeHeatPumpBindingProv
 
                     }
                 } catch (NibeHeatPumpException e) {
-                    logger.error("Error occured when received data from heat pump", e);
+                    logger.error("Error occurred when received data from heat pump", e);
                 }
             }
 
             try {
                 connector.disconnect();
             } catch (NibeHeatPumpException e) {
-                logger.error("Error occured when disconnecting form heat pump", e);
+                logger.error("Error occurred when disconnecting form heat pump", e);
             }
         }
 

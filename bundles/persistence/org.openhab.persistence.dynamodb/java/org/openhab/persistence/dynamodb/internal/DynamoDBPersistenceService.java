@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016, openHAB.org and others.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -188,10 +188,16 @@ public class DynamoDBPersistenceService implements QueryablePersistenceService {
     private boolean waitForTableToBecomeActive(String tableName) {
         try {
             logger.debug("Checking if table '{}' is created...", tableName);
-            TableDescription tableDescription = db.getDynamoDB().getTable(tableName).waitForActiveOrDelete();
-            if (tableDescription == null) {
-                // table has been deleted
-                logger.warn("Table '{}' deleted unexpectedly", tableName);
+            final TableDescription tableDescription;
+            try {
+                tableDescription = db.getDynamoDB().getTable(tableName).waitForActive();
+            } catch (IllegalArgumentException e) {
+                logger.warn("Table '{}' is being deleted: {} {}", tableName, e.getClass().getSimpleName(),
+                        e.getMessage());
+                return false;
+            } catch (ResourceNotFoundException e) {
+                logger.warn("Table '{}' was deleted unexpectedly: {} {}", tableName, e.getClass().getSimpleName(),
+                        e.getMessage());
                 return false;
             }
             boolean success = TableStatus.ACTIVE.equals(TableStatus.fromValue(tableDescription.getTableStatus()));
@@ -308,7 +314,7 @@ public class DynamoDBPersistenceService implements QueryablePersistenceService {
             return Collections.emptyList();
         }
 
-        Class<? extends DynamoDBItem<?>> dtoClass = AbstractDynamoDBItem.getDynamoItemClass(item.getClass());
+        Class<DynamoDBItem<?>> dtoClass = AbstractDynamoDBItem.getDynamoItemClass(item.getClass());
         String tableName = tableNameResolver.fromClass(dtoClass);
         DynamoDBMapper mapper = getDBMapper(tableName);
         logger.debug("item {} (class {}) will be tried to query using dto class {} from table {}", itemName,

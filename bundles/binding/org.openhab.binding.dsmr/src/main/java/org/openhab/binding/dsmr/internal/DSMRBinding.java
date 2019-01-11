@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -20,7 +20,6 @@ import org.openhab.binding.dsmr.internal.messages.OBISMessage;
 import org.openhab.binding.dsmr.internal.messages.OBISMsgFactory;
 import org.openhab.binding.dsmr.internal.p1telegram.P1TelegramParser;
 import org.openhab.core.binding.AbstractActiveBinding;
-import org.openhab.core.types.State;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.cm.ManagedService;
 import org.slf4j.Logger;
@@ -160,7 +159,7 @@ public class DSMRBinding extends AbstractActiveBinding<DSMRBindingProvider> impl
             for (DSMRBindingProvider provider : providers) {
                 for (String itemName : provider.getItemNames()) {
                     String dsmrItemId = provider.getDSMRItemID(itemName);
-                    for (CosemValue<? extends State> openHABValue : msg.getOpenHABValues()) {
+                    for (CosemValue<? extends Object> openHABValue : msg.getOpenHABValues()) {
                         // DSMR items with an empty dsmrItemId are filtered
                         // automatically
                         if (dsmrItemId.equals(openHABValue.getDsmrItemId())) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -120,7 +120,7 @@ public class JdbcPersistenceService extends JdbcMapper implements QueryablePersi
     public void store(Item item, String alias) {
         // Don not store undefined/uninitialised data
         if (item.getState() instanceof UnDefType) {
-            logger.warn("JDBC::store: ignore Item '{}' because it is UnDefType", item.getName());
+            logger.debug("JDBC::store: ignore Item '{}' because it is UnDefType", item.getName());
             return;
         }
         if (!checkDBAccessability()) {

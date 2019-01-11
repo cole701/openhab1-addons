@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -33,19 +33,19 @@ import org.slf4j.LoggerFactory;
  * @author Till Klocke
  * @since 1.4.0
  */
-public class CULIntertechnoBinding extends AbstractBinding<CULIntertechnoBindingProvider>implements ManagedService {
+public class CULIntertechnoBinding extends AbstractBinding<CULIntertechnoBindingProvider> implements ManagedService {
 
     private static final Logger logger = LoggerFactory.getLogger(CULIntertechnoBinding.class);
 
     /**
-     * How often should the command be repeated? See <a
-     * href="http://culfw.de/commandref.html">Culfw Command Ref</a> for more
+     * How often should the command be repeated? See
+     * <a href="http://culfw.de/commandref.html">Culfw Command Ref</a> for more
      * details.
      */
     private final static String KEY_REPETITIONS = "repetitions";
     /**
-     * How long should one pulse be? See <a
-     * href="http://culfw.de/commandref.html">Culfw Command Ref</a> for more
+     * How long should one pulse be? See
+     * <a href="http://culfw.de/commandref.html">Culfw Command Ref</a> for more
      * details.
      */
     private final static String KEY_WAVE_LENGTH = "wavelength";
@@ -102,20 +102,20 @@ public class CULIntertechnoBinding extends AbstractBinding<CULIntertechnoBinding
             String commandValue = null;
             switch (type) {
                 case ON:
-                    commandValue = config.getCommandValueON();
+                    commandValue = config.getCommandON();
                     break;
                 case OFF:
-                    commandValue = config.getCommandValueOFF();
+                    commandValue = config.getCommandOFF();
                     break;
             }
             if (commandValue != null) {
                 try {
-                    culHandlerLifecycle.getCul().send("is" + config.getAddress() + commandValue);
+                    culHandlerLifecycle.getCul().send("is" + commandValue);
                 } catch (CULCommunicationException e) {
                     logger.error("Can't write to CUL", e);
                 }
             } else {
-                logger.error("Can't determine value to send for command " + command.toString());
+                logger.warn("Can't determine value to send for command {}", command);
             }
         }
     }

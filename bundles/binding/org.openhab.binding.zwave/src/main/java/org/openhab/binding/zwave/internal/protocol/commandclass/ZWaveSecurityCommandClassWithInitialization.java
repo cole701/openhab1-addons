@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2010-2019 by the respective copyright holders.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
 import java.io.ByteArrayOutputStream;
@@ -362,7 +370,7 @@ public class ZWaveSecurityCommandClassWithInitialization extends ZWaveSecurityCo
                 logger.debug(
                         "NODE {}: call from NodeAdvancer initialize, inclusion flow, get the next message or wait for a response to the current one, nextMessage={}",
                         this.getNode().getNodeId(), nextMessage);
-                if (nextMessage == null) { // There is an outstanding request or a timeout error occured
+                if (nextMessage == null) { // There is an outstanding request or a timeout error occurred
                     if (securePairingComplete) {
                         inclusionStateTracker = null;
                         return null; // all done

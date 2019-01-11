@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -110,7 +110,7 @@ public class HDanywhereGenericBindingProvider extends AbstractGenericBindingProv
 
     /**
      * Parses the configuration string and update the provided config
-     * 
+     *
      * @param config
      * @param item
      * @param bindingConfig
@@ -146,7 +146,7 @@ public class HDanywhereGenericBindingProvider extends AbstractGenericBindingProv
      * This is an internal data structure to track
      * {@link ProtocolBindingConfigElement }.
      */
-    static class HDanywhereBindingConfig extends ArrayList<HDanywhereBindingConfigElement>implements BindingConfig {
+    static class HDanywhereBindingConfig extends ArrayList<HDanywhereBindingConfigElement> implements BindingConfig {
 
         private static final long serialVersionUID = -7252828812548386063L;
     }
@@ -189,14 +189,6 @@ public class HDanywhereGenericBindingProvider extends AbstractGenericBindingProv
             return "HDanywhereBindingConfigElement [host=" + host + ", port=" + port + ", interval=" + interval + "]";
         }
 
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Boolean autoUpdate(String itemName) {
-        return false;
     }
 
     @Override

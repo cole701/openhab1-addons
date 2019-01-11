@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -315,7 +315,7 @@ public class Eiscp implements EiscpInterface {
                 outStream.writeBytes(eiscpCmd.toString());
                 outStream.flush();
             } catch (IOException ioException) {
-                logger.error("Error occured when sending command", ioException);
+                logger.error("Error occurred when sending command", ioException);
 
                 if (retry > 0) {
                     logger.debug("Retry {}...", retry);
@@ -498,7 +498,7 @@ public class Eiscp implements EiscpInterface {
 
                 } catch (EiscpException e) {
 
-                    logger.error("Error occured during message waiting", e);
+                    logger.error("Error occurred during message waiting", e);
 
                 } catch (SocketTimeoutException e) {
 
@@ -509,7 +509,7 @@ public class Eiscp implements EiscpInterface {
                 } catch (Exception e) {
 
                     if (interrupted != true && this.isInterrupted() != true) {
-                        logger.error("Error occured during message waiting", e);
+                        logger.error("Error occurred during message waiting", e);
 
                         restartConnection = true;
 

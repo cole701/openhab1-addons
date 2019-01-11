@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -154,10 +154,20 @@ public abstract class SatelModule extends EventDispatcher implements SatelEventL
      * Stops communication by disconnecting from the module and stopping all
      * background tasks.
      */
-    public synchronized void close() {
+    public void close() {
+        // first we clear watchdog field in the object
+        CommunicationWatchdog watchdog = null;
         if (this.communicationWatchdog != null) {
-            this.communicationWatchdog.close();
-            this.communicationWatchdog = null;
+            synchronized (this) {
+                if (this.communicationWatchdog != null) {
+                    watchdog = this.communicationWatchdog;
+                    this.communicationWatchdog = null;
+                }
+            }
+        }
+        // then, if watchdog exists, we close it
+        if (watchdog != null) {
+            watchdog.close();
         }
     }
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016, openHAB.org and others.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -19,14 +19,12 @@ import java.util.Map;
 import org.openhab.binding.fatekplc.FatekPLCBindingProvider;
 import org.openhab.binding.fatekplc.items.FatekPLCItem;
 import org.openhab.core.binding.AbstractActiveBinding;
-import org.openhab.core.items.ItemRegistry;
 import org.openhab.core.types.Command;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.cm.ManagedService;
+import org.simplify4u.jfatek.io.FatekIOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.github.s4u.jfatek.io.FatekIOException;
 
 /**
  * Binding implementation for Fatek PLC.

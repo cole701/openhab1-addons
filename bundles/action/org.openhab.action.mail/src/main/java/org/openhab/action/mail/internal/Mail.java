@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -163,9 +163,8 @@ public class Mail {
         } else {
             logger.error(
                     "Cannot send e-mail because of missing configuration settings. The current settings are: "
-                            + "Host: '{}', port '{}', from '{}', startTLSEnabled: {}, sslOnConnect: {}, username: '{}', password '{}'",
-                    new Object[] { hostname, String.valueOf(port), from, String.valueOf(startTLSEnabled),
-                            String.valueOf(sslOnConnect), username, password });
+                            + "Host: '{}', port '{}', from '{}', startTLSEnabled: {}, sslOnConnect: {}, username: '{}'",
+                    hostname, port, from, startTLSEnabled, sslOnConnect, username);
         }
 
         return success;

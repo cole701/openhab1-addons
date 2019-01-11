@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -137,7 +137,7 @@ public class AlarmDecoderGenericBindingProvider extends AbstractGenericBindingPr
     /**
      * Removes existing item configurations
      *
-     * @param bcl array list of binding configs to be checked
+     * @param bcl  array list of binding configs to be checked
      * @param item item to be checked for
      */
     private static void removeExisting(ArrayList<AlarmDecoderBindingConfig> bcl, Item item) {
@@ -234,11 +234,6 @@ public class AlarmDecoderGenericBindingProvider extends AbstractGenericBindingPr
             default:
                 return (false);
         }
-    }
-
-    @Override
-    public Boolean autoUpdate(String itemName) {
-        return true;
     }
 
 }

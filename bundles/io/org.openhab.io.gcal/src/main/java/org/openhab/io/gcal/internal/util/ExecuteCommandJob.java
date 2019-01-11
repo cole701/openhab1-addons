@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -177,9 +177,12 @@ public class ExecuteCommandJob implements Job {
         }
 
         StreamTokenizer tokenizer = new StreamTokenizer(new StringReader(command));
-        tokenizer.wordChars('_', '_');
-        tokenizer.wordChars('-', '-');
-        tokenizer.wordChars('.', '.');
+        // treat all characters as ordinary, including digits, so we never
+        // have to deal with doubles
+        tokenizer.resetSyntax();
+        tokenizer.wordChars(0x23, 0xFF);
+        tokenizer.whitespaceChars(0x00, 0x20);
+        tokenizer.quoteChar('"');
 
         List<String> tokens = new ArrayList<String>();
         try {
@@ -191,9 +194,6 @@ public class ExecuteCommandJob implements Job {
                     case StreamTokenizer.TT_WORD:
                     case 34 /* quoted String */:
                         token = tokenizer.sval;
-                        break;
-                    case StreamTokenizer.TT_NUMBER:
-                        token = String.valueOf(tokenizer.nval);
                         break;
                 }
                 tokens.add(token);

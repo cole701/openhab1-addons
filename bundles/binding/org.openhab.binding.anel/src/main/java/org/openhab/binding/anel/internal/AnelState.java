@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -39,10 +39,17 @@ public class AnelState {
     /** Device temperature; read-only. */
     String temperature = null;
 
+    /** Sensor temperature; read-only. */
+    String sensorTemperature = null;
+    /** Sensor Humidity; read-only. */
+    String sensorHumidity = null;
+    /** Sensor Brightness; read-only. */
+    String sensorBrightness = null;
+
     /**
      * Create new internal state with default values <code>null</code> for the
      * specified IP address / network name.
-     * 
+     *
      * @param host
      *            The IP address / network name of an Anel device.
      */

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -108,7 +108,7 @@ public class CalDavQuery {
     public void setFilterName(String filterName) {
         this.filterName = filterName;
     }
-    
+
     public List<String> getFilterCategory() {
         return filterCategory;
     }
@@ -119,11 +119,9 @@ public class CalDavQuery {
 
     @Override
     public String toString() {
-        return "CalDavQuery [calendarIds=" + calendarIds + ", from=" + from
-                + ", to=" + to + ", sort=" + sort + ", filterName=" + filterName + "]";
+        return "CalDavQuery [calendarIds=" + calendarIds + ", from=" + from + ", to=" + to + ", sort=" + sort
+                + ", filterName=" + filterName + "]";
     }
-
-
 
     public enum Sort {
         ASCENDING,

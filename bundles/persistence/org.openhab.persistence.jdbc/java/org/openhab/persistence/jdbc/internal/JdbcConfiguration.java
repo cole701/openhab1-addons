@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -297,7 +297,7 @@ public class JdbcConfiguration {
             } else if (serviceName.equals("postgresql")) {
                 warn += "\tPostgreSQL:version >= 9.4.1208 from    http://mvnrepository.com/artifact/org.postgresql/postgresql\n";
             } else if (serviceName.equals("sqlite")) {
-                warn += "\tSQLite:    version >= 3.8.11.2 from           http://mvnrepository.com/artifact/org.xerial/sqlite-jdbc\n";
+                warn += "\tSQLite:    version >= 3.16.1 from           http://mvnrepository.com/artifact/org.xerial/sqlite-jdbc\n";
             }
             logger.warn(warn, serviceName);
         }

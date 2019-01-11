@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016, openHAB.org and others.
+ * Copyright (c) 2010-2019, openHAB.org and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -39,6 +39,10 @@ class InfoResponse {
         private BigDecimal currentFloorTemperature;
         @JsonProperty("AWAY")
         private Boolean away;
+        @JsonProperty("HOLIDAY")
+        private Boolean holiday;
+        @JsonProperty("HOLIDAY_DAYS")
+        private BigDecimal holidayDays;
         @JsonProperty("STANDBY")
         private Boolean standby;
         @JsonProperty("HEATING")
@@ -60,6 +64,14 @@ class InfoResponse {
 
         public Boolean isAway() {
             return away;
+        }
+
+        public Boolean isHoliday() {
+            return holiday;
+        }
+
+        public BigDecimal getHolidayDays() {
+            return holidayDays;
         }
 
         public Boolean isStandby() {
@@ -107,6 +119,6 @@ class InfoResponse {
                 return d;
             }
         }
-        throw new IllegalStateException("No device by the name of " + device + " was not found in the response.");
+        return null;
     }
 }

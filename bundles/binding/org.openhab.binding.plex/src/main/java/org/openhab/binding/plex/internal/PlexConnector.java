@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -414,6 +414,11 @@ public class PlexConnector extends Thread {
             clientCache = getDocument(clientsUrl, MediaContainer.class);
         }
 
+        if (clientCache == null) {
+            logger.debug("clientCache is null. Unable to get host.");
+            return null;
+        }
+
         Server server = clientCache.getServer(machineIdentifier);
         if (server != null) {
             return server;
@@ -571,7 +576,7 @@ public class PlexConnector extends Thread {
             } catch (JsonMappingException e) {
                 logger.error("Error mapping JSON", e);
             } catch (IOException e) {
-                logger.error("An I/O error occured while decoding JSON", e);
+                logger.error("An I/O error occurred while decoding JSON", e);
             }
 
             return null;

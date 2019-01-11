@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016, openHAB.org and others.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -23,15 +23,14 @@ import org.openhab.core.library.types.PercentType;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.State;
 import org.openhab.model.item.binding.BindingConfigParseException;
-
-import com.github.s4u.jfatek.FatekException;
-import com.github.s4u.jfatek.FatekPLC;
-import com.github.s4u.jfatek.FatekReadMixDataCmd;
-import com.github.s4u.jfatek.FatekWriteMixDataCmd;
-import com.github.s4u.jfatek.io.FatekIOException;
-import com.github.s4u.jfatek.registers.Reg;
-import com.github.s4u.jfatek.registers.RegValue;
-import com.github.s4u.jfatek.registers.UnknownRegNameException;
+import org.simplify4u.jfatek.FatekException;
+import org.simplify4u.jfatek.FatekPLC;
+import org.simplify4u.jfatek.FatekReadMixDataCmd;
+import org.simplify4u.jfatek.FatekWriteMixDataCmd;
+import org.simplify4u.jfatek.io.FatekIOException;
+import org.simplify4u.jfatek.registers.Reg;
+import org.simplify4u.jfatek.registers.RegValue;
+import org.simplify4u.jfatek.registers.UnknownRegNameException;
 
 /**
  * Color item implementation.

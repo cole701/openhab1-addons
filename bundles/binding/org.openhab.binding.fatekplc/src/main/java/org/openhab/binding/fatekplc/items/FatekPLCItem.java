@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016, openHAB.org and others.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -30,12 +30,11 @@ import org.openhab.core.library.items.SwitchItem;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.State;
 import org.openhab.model.item.binding.BindingConfigParseException;
+import org.simplify4u.jfatek.FatekPLC;
+import org.simplify4u.jfatek.registers.Reg;
+import org.simplify4u.jfatek.registers.RegValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.github.s4u.jfatek.FatekPLC;
-import com.github.s4u.jfatek.registers.Reg;
-import com.github.s4u.jfatek.registers.RegValue;
 
 /**
  * Default Fatek item implementation.

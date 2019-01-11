@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016, openHAB.org and others.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -191,7 +191,7 @@ public class EiscpSerial implements EiscpInterface, SerialPortEventListener {
 
         } catch (IOException e) {
 
-            logger.debug("IO error occured...reconnect and resend ones");
+            logger.debug("IO error occurred...reconnect and resend ones");
             closeSocket();
             connectSocket();
 

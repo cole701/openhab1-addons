@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -162,7 +162,7 @@ public class SonanceBinding extends AbstractActiveBinding<SonanceBindingProvider
 
                         }
                     } catch (UnknownHostException e) {
-                        logger.error("UnknownHostException occured when connecting to amplifier {}:{}.", ip, port);
+                        logger.error("UnknownHostException occurred when connecting to amplifier {}:{}.", ip, port);
                     } catch (IOException e) {
                         logger.debug("Amplifier ({},{}) is offline, status can't be updated at this moment.", ip, port);
                         try {

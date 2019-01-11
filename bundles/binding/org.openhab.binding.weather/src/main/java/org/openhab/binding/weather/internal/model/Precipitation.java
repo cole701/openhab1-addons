@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,8 +27,7 @@ public class Precipitation {
             @Provider(name = ProviderName.WUNDERGROUND, property = "current_observation.precip_1hr_metric"),
             @Provider(name = ProviderName.WUNDERGROUND, property = "qpf_allday.mm"),
             @Provider(name = ProviderName.OPENWEATHERMAP, property = "rain.3h", converter = ConverterType.DOUBLE_3H),
-            @Provider(name = ProviderName.OPENWEATHERMAP, property = "rain", converter = ConverterType.DOUBLE_3H),
-            @Provider(name = ProviderName.OPENWEATHERMAP, property = "rain.1h"),
+            @Provider(name = ProviderName.OPENWEATHERMAP, property = "rain"),
             @Provider(name = ProviderName.WORLDWEATHERONLINE, property = "precipMM"),
             @Provider(name = ProviderName.HAMWEATHER, property = "precipMM"),
             @Provider(name = ProviderName.METEOBLUE, property = "precipitation_amount") })
@@ -37,6 +36,7 @@ public class Precipitation {
     @ProviderMappings({
             @Provider(name = ProviderName.WUNDERGROUND, property = "snow_allday.cm"),
             @Provider(name = ProviderName.OPENWEATHERMAP, property = "snow.3h", converter = ConverterType.DOUBLE_3H),
+            @Provider(name = ProviderName.OPENWEATHERMAP, property = "snow"),
             @Provider(name = ProviderName.HAMWEATHER, property = "snowDepthCM") })
     private Double snow;
 

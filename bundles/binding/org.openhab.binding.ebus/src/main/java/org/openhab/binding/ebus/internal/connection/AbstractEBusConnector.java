@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -155,7 +155,7 @@ public abstract class AbstractEBusConnector extends Thread {
                     // lastReceiveTime = System.nanoTime();
 
                     if (read == -1) {
-                        logger.debug("eBUS read timeout occured, no data on bus ...");
+                        logger.debug("eBUS read timeout occurred, no data on bus ...");
 
                     } else {
 
@@ -179,7 +179,7 @@ public abstract class AbstractEBusConnector extends Thread {
                 }
 
             } catch (IOException e) {
-                logger.error("An IO exception has occured! Try to reconnect eBus connector ...", e);
+                logger.error("An IO exception has occurred! Try to reconnect eBus connector ...", e);
 
                 try {
                     reconnect();

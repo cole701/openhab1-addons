@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2019 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,7 +27,6 @@ public class Temperature {
             @Provider(name = ProviderName.OPENWEATHERMAP, property = "temp.day"),
             @Provider(name = ProviderName.FORECASTIO, property = "currently.temperature"),
             @Provider(name = ProviderName.WORLDWEATHERONLINE, property = "temp_C"),
-            @Provider(name = ProviderName.YAHOO, property = "condition.temp"),
             @Provider(name = ProviderName.HAMWEATHER, property = "tempC"),
             @Provider(name = ProviderName.METEOBLUE, property = "temperature") })
     private Double current;
@@ -38,7 +37,6 @@ public class Temperature {
             @Provider(name = ProviderName.OPENWEATHERMAP, property = "temp.min"),
             @Provider(name = ProviderName.FORECASTIO, property = "temperatureMin"),
             @Provider(name = ProviderName.WORLDWEATHERONLINE, property = "tempMinC"),
-            @Provider(name = ProviderName.YAHOO, property = "forecast.low"),
             @Provider(name = ProviderName.HAMWEATHER, property = "minTempC"),
             @Provider(name = ProviderName.METEOBLUE, property = "temperature_min") })
     private Double min;
@@ -49,13 +47,13 @@ public class Temperature {
             @Provider(name = ProviderName.OPENWEATHERMAP, property = "temp.max"),
             @Provider(name = ProviderName.FORECASTIO, property = "temperatureMax"),
             @Provider(name = ProviderName.WORLDWEATHERONLINE, property = "tempMaxC"),
-            @Provider(name = ProviderName.YAHOO, property = "forecast.high"),
             @Provider(name = ProviderName.HAMWEATHER, property = "maxTempC"),
             @Provider(name = ProviderName.METEOBLUE, property = "temperature_max") })
     private Double max;
 
     @ProviderMappings({
             @Provider(name = ProviderName.WUNDERGROUND, property = "current_observation.feelslike_c"),
+            @Provider(name = ProviderName.FORECASTIO, property = "apparentTemperature"),
             @Provider(name = ProviderName.HAMWEATHER, property = "feelslikeC") })
     private Double feel;
 
