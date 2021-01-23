@@ -60,7 +60,7 @@ where `<who>` is from the following table:
 
 At the moment only 2 (Automation), 1 (Lightning), 15 (Basic & Evolved CEN) and part of the 4 (Temperature Control) are supported.
 
-For more details refer to the official document [OpenWebNet Introduction](http://www.myopen-legrandgroup.com/resources/own_protocol/m/own_documents/16.aspx).
+For more details refer to the official document [OpenWebNet Introduction](https://developer.legrand.com/uploads/2019/12/OWN_Intro_ENG.pdf).
 
 ## Examples
 
@@ -215,19 +215,19 @@ when
 then
     if (receivedCommand == ON) {
 
-        sendCommand(Plug_AV_Amplifier, ON)  
-        sendCommand(Plug_Subwoofer, ON)
-        sendCommand(Spotlights_TV, ON)
-        sendCommand(RollUpShutter_1, DOWN)
-        sendCommand(RollUpShutter_2, DOWN)
+        Plug_AV_Amplifier.sendCommand(ON)  
+        Plug_Subwoofer.sendCommand(ON)
+        Spotlights_TV.sendCommand(ON)
+        RollUpShutter_1.sendCommand(DOWN)
+        RollUpShutter_2.sendCommand(DOWN)
 
     } else if (receivedCommand == OFF) {
     
-        sendCommand(Plug_Subwoofer, OFF)
-        sendCommand(Plug_AV_Amplifier, OFF) 
-        sendCommand(Spotlights_TV, ON)
-        sendCommand(RollUpShutter_1, UP)
-        sendCommand(RollUpShutter_2, UP)
+        Plug_Subwoofer.sendCommand(OFF)
+        Plug_AV_Amplifier.sendCommand(OFF) 
+        Spotlights_TV.sendCommand(ON)
+        RollUpShutter_1.sendCommand(UP)
+        RollUpShutter_2.sendCommand(UP)
 
     }   
 end
@@ -244,9 +244,9 @@ then
             // Number of rings
             while (idx < 5) {
 
-                    sendCommand(Corridor_Warning, ON)
+                    Corridor_Warning.sendCommand(ON)
                     Thread::sleep(1500)
-                    sendCommand(Corridor_Warning, OFF)
+                    Corridor_Warning.sendCommand(OFF)
                     Thread::sleep(1500)
                     idx = idx + 1
 

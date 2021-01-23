@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2019 by the respective copyright holders.
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.velux;
 
@@ -14,9 +18,11 @@ import org.openhab.binding.velux.internal.VeluxItemType;
  * The {@link VeluxBindingConstants} class defines common constants, which are
  * used across the whole binding.
  *
- * For an in-depth view of the available Item type with description of parameters, take a look onto {@link VeluxItemType}.
+ * For an in-depth view of the available Item type with description of parameters, take a look onto
+ * {@link VeluxItemType}.
  *
  * @author Guenther Schreiner - Initial contribution
+ * @since 1.13.0
  */
 public class VeluxBindingConstants {
 
@@ -26,12 +32,15 @@ public class VeluxBindingConstants {
     // List of all thing ids
     public static final String THING_VELUX_SCENE = "scene";
     public static final String THING_VELUX_BRIDGE = "bridge";
+    public static final String THING_VELUX_ACTUATOR = "actuator";
 
     // Id of support bridge
     public static final String BRIDGE_TYPE = "klf200";
 
     // List of all bridge channel ids
     public static final String CHANNEL_BRIDGE_STATUS = "status";
+    public static final String CHANNEL_BRIDGE_RELOAD = "reload";
+    public static final String CHANNEL_BRIDGE_TIMESTAMP = "timestamp";
     public static final String CHANNEL_BRIDGE_DO_DETECTION = "doDetection";
     public static final String CHANNEL_BRIDGE_FIRMWARE = "firmware";
     public static final String CHANNEL_BRIDGE_IPADDRESS = "ipAddress";
@@ -49,6 +58,9 @@ public class VeluxBindingConstants {
     public static final String CHANNEL_SCENE_ACTION = "action";
     public static final String CHANNEL_SCENE_SILENTMODE = "silentMode";
 
+    // List of all actuator channel ids
+    public static final String CHANNEL_ACTUATOR_SERIAL = "serial";
+
     /** Helper definitions */
     public static final String BINDING_KVPAIR_SEPARATOR = ";";
     public static final String BINDING_KV_SEPARATOR = "=";
@@ -58,6 +70,3 @@ public class VeluxBindingConstants {
     public static final String BINDING_ID_CHANNEL = "channel";
 
 }
-/**
- * end-of-VeluxBindingConstants.java
- */

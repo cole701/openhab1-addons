@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2019 by the respective copyright holders.
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.velux.bridge.comm;
 
@@ -25,7 +29,9 @@ import org.openhab.binding.velux.bridge.VeluxBridge;
  * BridgeCommunicationProtocol}.
  *
  * @author Guenther Schreiner - Initial contribution.
+ * @since 1.13.0
  */
+@Deprecated
 public class BCgetProducts implements BridgeCommunicationProtocol<BCgetProducts.Response> {
 
     public static String url = "/api/v1/products";
@@ -82,6 +88,7 @@ public class BCgetProducts implements BridgeCommunicationProtocol<BCgetProducts.
      * Bridge I/O Request message used by {@link VeluxBridge} for serializing:
      * <P>
      * Resulting JSON:
+     * 
      * <pre>
      * {"action":"get","params":{}}
      * </pre>
@@ -105,6 +112,7 @@ public class BCgetProducts implements BridgeCommunicationProtocol<BCgetProducts.
      * deserialization with including component access methods
      * <P>
      * Expected JSON (sample):
+     * 
      * <pre>
      * {
      * "token": "pESIc/9zDWa1CJR6hCDzLw==",
@@ -200,6 +208,3 @@ public class BCgetProducts implements BridgeCommunicationProtocol<BCgetProducts.
     }
 
 }
-/**
- * end-of-bridge/comm/BCgetProducts.java
- */

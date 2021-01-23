@@ -1,14 +1,18 @@
 /**
- * Copyright (c) 2010-2019 by the respective copyright holders.
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.velux.things;
 
-import org.openhab.binding.velux.bridge.comm.BCgetScenes.BCproductState;
+import org.openhab.binding.velux.bridge.comm.BCgetScenes;
 
 /**
  * <B>Velux</B> product status representation.
@@ -18,6 +22,7 @@ import org.openhab.binding.velux.bridge.comm.BCgetScenes.BCproductState;
  * @see VeluxProduct
  *
  * @author Guenther Schreiner - initial contribution.
+ * @since 1.13.0
  */
 public class VeluxProductState {
 
@@ -50,10 +55,6 @@ public class VeluxProductState {
         this.state = new ProductState(state);
     }
 
-    public VeluxProductState(BCproductState productState) {
-        this(new VeluxProductReference(productState), productState.getActuator(), productState.getStatus());
-    }
-
     // Class access methods
 
     public VeluxProductReference getProductReference() {
@@ -76,8 +77,8 @@ public class VeluxProductState {
     public String toString() {
         return String.format("State (%s, actuator %d, value %d)", this.productReference, this.actuator, this.state);
     }
-}
 
-/**
- * end-of-VeluxProductState.java
- */
+    @Deprecated
+    public VeluxProductState(BCgetScenes.BCproductState productState) {
+    }
+}

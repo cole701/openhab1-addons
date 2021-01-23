@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2019 by the respective copyright holders.
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.fritzboxtr064.internal;
 
@@ -179,7 +183,7 @@ public class Tr064Comm {
 
             String itemCommand = itemConfiguration.getItemCommand();
 
-            if (values.containsKey(itemCommand)) {
+            if (values.containsKey(itemConfiguration)) {
                 // item value already read by earlier MultiItemMap
                 continue;
             }
@@ -193,6 +197,10 @@ public class Tr064Comm {
                 continue;
             }
 
+            if (itemMap.getReadServiceCommand() == null) {
+                logger.debug("skipping {}, read command is null", itemMap);
+                continue;
+            }
             // determine which url etc. to connect to for accessing required value
             Tr064Service tr064service = determineServiceByItemMapping(itemMap);
 
@@ -679,8 +687,9 @@ public class Tr064Comm {
                 }).build();
         addItemMap(imMacOnline);
 
-        addItemMap(new MultiItemMap(Arrays.asList("modelName", "manufacturerName", "softwareVersion", "serialNumber"),
-                "GetInfo", "urn:DeviceInfo-com:serviceId:DeviceInfo1", name -> "New" + WordUtils.capitalize(name)));
+        addItemMap(new MultiItemMap(
+                Arrays.asList("modelName", "manufacturerName", "softwareVersion", "serialNumber", "upTime"), "GetInfo",
+                "urn:DeviceInfo-com:serviceId:DeviceInfo1", name -> "New" + WordUtils.capitalize(name)));
         addItemMap(SingleItemMap.builder().itemCommand("wanip")
                 .serviceId("urn:WANPPPConnection-com:serviceId:WANPPPConnection1")
                 .itemArgumentName("NewExternalIPAddress").readServiceCommand("GetExternalIPAddress").build());
@@ -869,6 +878,11 @@ public class Tr064Comm {
                 .itemArgumentName("NewEnable").readServiceCommand("GetDeflection")
                 .writeServiceCommand("SetDeflectionEnable").build();
         addItemMap(callDeflection);
+
+        // reboot
+        SingleItemMap reboot = SingleItemMap.builder().itemCommand("reboot")
+                .serviceId("urn:DeviceConfig-com:serviceId:DeviceConfig1").writeServiceCommand("Reboot").build();
+        addItemMap(reboot);
     }
 
     private void addItemMap(ItemMap itemMap) {

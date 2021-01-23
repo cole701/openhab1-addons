@@ -1,24 +1,37 @@
 /**
- * Copyright (c) 2010-2019 by the respective copyright holders.
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.velux.things;
 
-import org.openhab.binding.velux.bridge.comm.BCgetScenes.BCproductState;
-import org.openhab.binding.velux.bridge.comm.BCgetScenes.BCscene;
+import org.openhab.binding.velux.bridge.comm.BCgetScenes;
 
 /**
  * <B>Velux</B> scene representation.
  * <P>
  * Combined set of information with references towards multiple Velux product states.
+ * <P>
+ * Methods in handle this type of information:
+ * <UL>
+ * <LI>{@link #VeluxScene(String, int, boolean, VeluxProductState[])} to create a new scene.</LI>
+ * <LI>{@link #VeluxScene(VeluxScene)} to duplicate a scene.</LI>
+ * <LI>{@link #getName} to retrieve the name of this scene.</LI>
+ * <LI>{@link #getBridgeSceneIndex()} to retrieve the index of this scene.</LI>
+ * <LI>{@link #toString()} to retrieve a human-readable description of this scene.</LI>
+ * </UL>
  *
  * @see VeluxProductState
  *
  * @author Guenther Schreiner - initial contribution.
+ * @since 1.13.0
  */
 public class VeluxScene {
 
@@ -67,19 +80,6 @@ public class VeluxScene {
 
     // Constructor
 
-    public VeluxScene(BCscene sceneDescr) {
-        this.name = new SceneName(sceneDescr.getName());
-        this.bridgeSceneIndex = new SceneBridgeIndex(sceneDescr.getId());
-        this.silent = sceneDescr.getSilent();
-
-        BCproductState[] productStates = sceneDescr.getProductStates();
-        this.productStates = new VeluxProductState[productStates.length];
-
-        for (int i = 0; i < productStates.length; i++) {
-            this.productStates[i] = new VeluxProductState(productStates[i]);
-        }
-    }
-
     public VeluxScene(String name, int sceneBridgeIndex, boolean silentOperation, VeluxProductState[] actions) {
         this.name = new SceneName(name);
         this.bridgeSceneIndex = new SceneBridgeIndex(sceneBridgeIndex);
@@ -87,6 +87,12 @@ public class VeluxScene {
         this.productStates = actions;
     }
 
+    public VeluxScene(VeluxScene scene) {
+        this.name = new SceneName(scene.name.toString());
+        this.bridgeSceneIndex = new SceneBridgeIndex(scene.bridgeSceneIndex.toInt());
+        this.silent = scene.silent;
+        this.productStates = scene.productStates;
+    }
     // Class access methods
 
     public SceneName getName() {
@@ -102,8 +108,8 @@ public class VeluxScene {
         return String.format("Scene \"%s\" (index %d) with %ssilent mode and %d actions", this.name,
                 this.bridgeSceneIndex.toInt(), this.silent ? "" : "non-", this.productStates.length);
     }
-}
 
-/**
- * end-of-VeluxScene.java
- */
+    @Deprecated
+    public VeluxScene(BCgetScenes.BCscene sceneDescr) {
+    }
+}

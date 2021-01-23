@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2010-2019 by the respective copyright holders.
+	Copyright (c) 2010-2020 Contributors to the openHAB project
 
-    All rights reserved. This program and the accompanying materials
-    are made available under the terms of the Eclipse Public License v1.0
-    which accompanies this distribution, and is available at
-    http://www.eclipse.org/legal/epl-v10.html
+	See the NOTICE file(s) distributed with this work for additional
+	information.
+
+	This program and the accompanying materials are made available under the
+	terms of the Eclipse Public License 2.0 which is available at
+	http://www.eclipse.org/legal/epl-2.0
+
+	SPDX-License-Identifier: EPL-2.0
 
 -->
 <features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
@@ -19,13 +23,6 @@
     <feature>openhab-binding-ecobee1</feature>
     <bundle start-level="80">mvn:org.openhab.action/org.openhab.action.ecobee/${project.version}</bundle>
     <configfile finalname="${openhab.conf}/services/ecobee.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/ecobee</configfile>
-  </feature>
-
-  <feature name="openhab-action-mail" description="Mail Action" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.action/org.openhab.action.mail/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/mail.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/mail</configfile>
   </feature>
 
   <feature name="openhab-action-mios" description="MiOS Action" version="${project.version}">
@@ -50,13 +47,6 @@
     <configfile finalname="${openhab.conf}/services/prowl.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/prowl</configfile>
   </feature>
 
-  <feature name="openhab-action-pushbullet" description="Pushbullet Action" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.action/org.openhab.action.pushbullet/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/pushbullet.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/pushbullet</configfile>
-  </feature>
-  
   <feature name="openhab-action-pushover" description="Pushover Action" version="${project.version}">
     <feature>openhab-runtime-base</feature>
     <feature>openhab-runtime-compat1x</feature>
@@ -154,13 +144,6 @@
     <configfile finalname="${openhab.conf}/services/comfoair.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/comfoair</configfile>
   </feature>
 
-  <feature name="openhab-binding-denon1" description="Denon Binding" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.denon/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/denon.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/denon</configfile>
-  </feature>
-
   <feature name="openhab-binding-ebus1" description="eBUS Binding" version="${project.version}">
     <feature>openhab-runtime-base</feature>
     <feature>openhab-runtime-compat1x</feature>
@@ -219,6 +202,8 @@
   <feature name="openhab-binding-fatekplc1" description="Fatek PLC Binding" version="${project.version}">
     <feature>openhab-runtime-base</feature>
     <feature>openhab-runtime-compat1x</feature>
+    <feature>openhab-transport-serial</feature>
+    <bundle start-level="80">mvn:org.simplify4u/jfatek/3.0.0</bundle>
     <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.fatekplc/${project.version}</bundle>
     <configfile finalname="${openhab.conf}/services/fatekplc.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/fatekplc</configfile>
   </feature>
@@ -301,13 +286,6 @@
     <configfile finalname="${openhab.conf}/services/iec6205621meter.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/iec6205621meter</configfile>
   </feature>
 
-  <feature name="openhab-binding-ihc1" description="IHC Binding" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.ihc/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/ihc.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/ihc</configfile>
-  </feature>
-
   <feature name="openhab-binding-insteonplm1" description="InsteonPLM Binding" version="${project.version}">
     <feature>openhab-runtime-base</feature>
     <feature>openhab-runtime-compat1x</feature>
@@ -336,13 +314,6 @@
     <feature>openhab-runtime-compat1x</feature>
     <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.jointspace/${project.version}</bundle>
     <configfile finalname="${openhab.conf}/services/jointspace.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/jointspace</configfile>
-  </feature>
-
-  <feature name="openhab-binding-km1001" description="KM200 Binding" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.km200/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/km200.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/km200</configfile>
   </feature>
 
   <feature name="openhab-binding-koubachi1" description="Koubachi Binding" version="${project.version}">
@@ -433,20 +404,6 @@
     <configfile finalname="${openhab.conf}/services/myq.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/myq</configfile>
   </feature>
 
-  <feature name="openhab-binding-neohub1" description="Neohub Binding" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.neohub/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/neohub.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/neohub</configfile>
-  </feature>
-
-  <feature name="openhab-binding-networkupstools1" description="Network UPS Tools Binding" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.networkupstools/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/networkupstools.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/networkupstools</configfile>
-  </feature>
-
   <feature name="openhab-binding-nikobus1" description="Nikobus Binding" version="${project.version}">
     <feature>openhab-runtime-base</feature>
     <feature>openhab-runtime-compat1x</feature>
@@ -498,6 +455,13 @@
     <configfile finalname="${openhab.conf}/services/piface.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/piface</configfile>
   </feature>
 
+  <feature name="openhab-binding-pilight1" description="pilight Binding" version="${project.version}">
+    <feature>openhab-runtime-base</feature>
+    <feature>openhab-runtime-compat1x</feature>
+    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.pilight/${project.version}</bundle>
+    <configfile finalname="${openhab.conf}/services/pilight.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/pilight</configfile>
+  </feature>
+
   <feature name="openhab-binding-samsungac1" description="Samsung A/C Binding" version="${project.version}">
     <feature>openhab-runtime-base</feature>
     <feature>openhab-runtime-compat1x</feature>
@@ -517,13 +481,6 @@
     <feature>openhab-runtime-compat1x</feature>
     <feature>openhab-transport-serial</feature>
     <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.serial/${project.version}</bundle>
-  </feature>
-
-  <feature name="openhab-binding-snmp1" description="SNMP Binding" version="${project.version}">
-    <feature>openhab-runtime-base</feature>
-    <feature>openhab-runtime-compat1x</feature>
-    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.snmp/${project.version}</bundle>
-    <configfile finalname="${openhab.conf}/services/snmp.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/snmp</configfile>
   </feature>
 
   <feature name="openhab-binding-sonance1" description="Sonance Binding" version="${project.version}">
@@ -576,6 +533,13 @@
     <feature>openhab-transport-serial</feature>
     <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.upb/${project.version}</bundle>
     <configfile finalname="${openhab.conf}/services/upb.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/upb</configfile>
+  </feature>
+
+  <feature name="openhab-binding-velux" description="Velux Binding" version="${project.version}">
+    <feature>openhab-runtime-base</feature>
+    <feature>openhab-runtime-compat1x</feature>
+    <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.velux/${project.version}</bundle>
+    <configfile finalname="${openhab.conf}/services/velux.cfg" override="false">mvn:${project.groupId}/openhab-addons-external/${project.version}/cfg/velux</configfile>
   </feature>
 
   <feature name="openhab-binding-weather1" description="Weather Binding" version="${project.version}">

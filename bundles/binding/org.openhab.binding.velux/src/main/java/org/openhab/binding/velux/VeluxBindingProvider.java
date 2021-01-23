@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2019 by the respective copyright holders.
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.velux;
 
@@ -20,7 +24,7 @@ import org.openhab.core.autoupdate.AutoUpdateBindingProvider;
  * Implementing classes should register themselves as a service in order to be
  * taken into account.
  *
- * @author Guenther Schreiner
+ * @author Guenther Schreiner - Initial contribution
  * @since 1.13.0
  */
 public interface VeluxBindingProvider extends AutoUpdateBindingProvider {
@@ -28,22 +32,16 @@ public interface VeluxBindingProvider extends AutoUpdateBindingProvider {
     /**
      * Returns the <code>config</code> to the given <code>itemName</code>.
      *
-     * @param itemName
-     *                     the item for which to find a id.
-     *
-     * @return the corresponding <code>config</code> to the given <code>itemName</code>.
+     * @param itemName the item for which to find an id.
+     * @return the corresponding <code>config</code> to the given <code>itemName</code>
      */
     public VeluxBindingConfig getConfigForItemName(String itemName);
 
     /**
      * Returns all items which are mapped to a Velux-In-Binding
      *
-     * @return item which are mapped to a Velux-In-Binding
+     * @return <B>items</B> as list of type String which are mapped to a Velux-In-Binding.
      */
     public List<String> getInBindingItemNames();
 
 }
-
-/*
- * end-of-VeluxBindingProvider.java
- */

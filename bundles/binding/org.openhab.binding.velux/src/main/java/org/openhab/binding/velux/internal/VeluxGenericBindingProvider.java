@@ -1,10 +1,14 @@
 /**
- * Copyright (c) 2010-2019 by the respective copyright holders.
+ * Copyright (c) 2010-2020 Contributors to the openHAB project
  *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * See the NOTICE file(s) distributed with this work for additional
+ * information.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
  */
 package org.openhab.binding.velux.internal;
 
@@ -41,7 +45,7 @@ import org.slf4j.LoggerFactory;
  * <li><code>{ velux="thing=scene;channel=silentMode#OpenWindows" }</code></li>
  * </ul>
  *
- * @author Guenther Schreiner
+ * @author Guenther Schreiner - Initial contribution
  * @since 1.13.0
  */
 public class VeluxGenericBindingProvider extends AbstractGenericBindingProvider implements VeluxBindingProvider {
@@ -144,9 +148,6 @@ public class VeluxGenericBindingProvider extends AbstractGenericBindingProvider 
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getBindingType() {
         logger.trace("getBindingType() called, returning {}.", VeluxBindingConstants.BINDING_ID);
@@ -239,6 +240,12 @@ public class VeluxGenericBindingProvider extends AbstractGenericBindingProvider 
                     case VeluxBindingConstants.CHANNEL_BRIDGE_STATUS:
                         config = new VeluxBindingConfig(VeluxItemType.BRIDGE_STATUS, bindingConfig);
                         break;
+                    case VeluxBindingConstants.CHANNEL_BRIDGE_RELOAD:
+                        config = new VeluxBindingConfig(VeluxItemType.BRIDGE_RELOAD, bindingConfig);
+                        break;
+                    case VeluxBindingConstants.CHANNEL_BRIDGE_TIMESTAMP:
+                        config = new VeluxBindingConfig(VeluxItemType.BRIDGE_TIMESTAMP, bindingConfig);
+                        break;
                     case VeluxBindingConstants.CHANNEL_BRIDGE_DO_DETECTION:
                         config = new VeluxBindingConfig(VeluxItemType.BRIDGE_DO_DETECTION, bindingConfig);
                         break;
@@ -260,6 +267,9 @@ public class VeluxGenericBindingProvider extends AbstractGenericBindingProvider 
                     case VeluxBindingConstants.CHANNEL_BRIDGE_WLANSSID:
                         config = new VeluxBindingConfig(VeluxItemType.BRIDGE_WLANSSID, bindingConfig);
                         break;
+                    case VeluxBindingConstants.CHANNEL_BRIDGE_WLANPASSWORD:
+                        config = new VeluxBindingConfig(VeluxItemType.BRIDGE_WLANPASSWORD, bindingConfig);
+                        break;
                     case VeluxBindingConstants.CHANNEL_BRIDGE_PRODUCTS:
                         config = new VeluxBindingConfig(VeluxItemType.BRIDGE_PRODUCTS, bindingConfig);
                         break;
@@ -279,6 +289,24 @@ public class VeluxGenericBindingProvider extends AbstractGenericBindingProvider 
                     default:
                         throw new BindingConfigParseException("Velux binding must contain one of "
                                 + Arrays.toString(VeluxItemType.getChannelIdentifiers(thisBinding.thingIdentifier))
+                                + " as channel keyword");
+                }
+                break;
+
+            case VeluxBindingConstants.THING_VELUX_ACTUATOR:
+                logger.trace("processBindingConfiguration() found THING_VELUX_ACTUATOR w/ channelValue={}.",
+                        thisBinding.channelValue);
+                if (thisBinding.channelValue.length() == 0) {
+                    throw new BindingConfigParseException(
+                            "Velux binding must contain a serial specified as channel subvalue.");
+                }
+                switch (thisBinding.channelIdentifier) {
+                    case VeluxBindingConstants.CHANNEL_ACTUATOR_SERIAL:
+                        config = new VeluxBindingConfig(VeluxItemType.ACTUATOR_SERIAL, thisBinding.channelValue);
+                        break;
+                    default:
+                        throw new BindingConfigParseException("Velux binding must contain one of "
+                                + VeluxItemType.getChannelIdentifiers(thisBinding.thingIdentifier)
                                 + " as channel keyword");
                 }
                 break;
@@ -310,7 +338,7 @@ public class VeluxGenericBindingProvider extends AbstractGenericBindingProvider 
         } else if (super.bindingConfigs.containsKey(itemName)) {
             config = (VeluxBindingConfig) super.bindingConfigs.get(itemName);
         }
-        logger.trace("getConfigForItemName() returns {}.", config);
+        logger.trace("getConfigForItemName() returns {}.", (config != null) ? config.getBindingConfig() : "**null**");
         return config;
     }
 
@@ -345,7 +373,3 @@ public class VeluxGenericBindingProvider extends AbstractGenericBindingProvider 
     }
 
 }
-
-/**
- * end-of-internal/VeluxGenericBindingProvider.java
- */
